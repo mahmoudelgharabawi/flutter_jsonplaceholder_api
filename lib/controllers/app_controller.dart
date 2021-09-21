@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
+import 'package:tester_api/models/comment.dart';
 import 'package:tester_api/models/post.dart';
 
 class AppController {
@@ -23,5 +24,12 @@ class AppController {
       print(value.statusCode);
       print(value.body);
     });
+  }
+
+  static Future<List<Comment>> getComments({required int postId}) async {
+    String url = 'https://jsonplaceholder.typicode.com/comments?postId=$postId';
+    final response = await http.get(Uri.parse(url));
+    return List<Comment>.from(
+        jsonDecode(response.body).map((e) => Comment.fromJson(e)));
   }
 }

@@ -1,5 +1,8 @@
+import 'dart:js';
+
 import 'package:flutter/material.dart';
 import 'package:tester_api/models/post.dart';
+import 'package:tester_api/screens/comment_screen.dart';
 
 class PostDetail extends StatelessWidget {
   final Post post;
@@ -32,6 +35,19 @@ class PostDetail extends StatelessWidget {
               ListTile(
                 title: const Text('User ID'),
                 subtitle: Text('${post.userId}'),
+              ),
+              Align(
+                alignment: Alignment.centerLeft,
+                child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) {
+                        return CommentScreen(
+                          postId: post.id!,
+                        );
+                      }));
+                    },
+                    child: const Text('See Comments')),
               ),
             ],
           ),

@@ -1,5 +1,8 @@
+import 'dart:js';
 
-import 'package:flutter/material.dart';import 'package:tester_api/models/post.dart';
+import 'package:flutter/material.dart';
+import 'package:tester_api/models/post.dart';
+import 'package:tester_api/screens/comment_screen.dart';
 import 'package:tester_api/screens/post_details.dart';
 import 'package:tester_api/screens/send_post.dart';
 
@@ -64,6 +67,45 @@ class _MyHomeState extends State<MyHome> {
             },
           )
         ],
+      ),
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: <Widget>[
+            const UserAccountsDrawerHeader(
+              accountName: Text("Mahmoud Ahmed"),
+              accountEmail: Text("m.elgharabawi3@gmail.com"),
+              currentAccountPicture: CircleAvatar(
+                backgroundColor: Colors.white,
+                child: Text(
+                  "M",
+                  style: TextStyle(fontSize: 40.0),
+                ),
+              ),
+            ),
+            ListTile(
+              leading: const Icon(Icons.home),
+              title: const Text("Home"),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.settings),
+              title: const Text("Settings"),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.contacts),
+              title: const Text("Contact Us"),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
+          ],
+        ),
       ),
       body: posDataList.isEmpty
           ? const Center(
